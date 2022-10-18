@@ -13,6 +13,8 @@ def get_hourly_weather_data(url):
     for i in range(n):
         if after_tomorrow_day in HourlyWeatherForecast[i]['ForecastHour']:
             ForecastRelativeHumidityList.append(HourlyWeatherForecast[i]['ForecastRelativeHumidity'])
+            if len(ForecastRelativeHumidityList) == 24:
+                break
     minHumidityList, maxHumidityList = min(ForecastRelativeHumidityList), max(
         ForecastRelativeHumidityList)  # 从列表中抽取最大和最小的湿度数据
     print("the relative humidity for the day after tomorrow is {0}% - {1}%".format(minHumidityList, maxHumidityList))
